@@ -14,7 +14,7 @@ sumatoria :: Int -> (Int -> Int) -> Int
 sumatoria 0 funcion = 0
 sumatoria n funcion = funcion n + sumatoria (n - 1) funcion
 
--- Ejercicio 3: Cantidad de elementos de A que se encuentran en B
+-- Ejercicio 3: Cantidad de elementos de A que se encuentran en B. Función principal: "cantidad".
 
 cantidad :: Ord a => [a] -> [a] -> Int
 cantidad [] _ = 0
@@ -26,7 +26,7 @@ comparar _ [] = 0
 comparar (x : xs) (y : ys) | x == y = 1
                            | otherwise = comparar (x : xs) ys
 
--- Ejercicio 4: Lista triangular. 
+-- Ejercicio 4: Lista triangular. Función principal: "triangular".
 
 triangular :: Ord a => [a] -> Bool
 triangular [] = True
@@ -40,12 +40,12 @@ decreciente [x] = True
 decreciente (x : y : xs) | x >= y = decreciente (y : xs)
                          | otherwise = False 
 
--- Ejercicio 5: Factores primos de n
+-- Ejercicio 5: Factores primos de n. Función principal: "factoresPrimos".
 
-primos :: Int -> [Int]
-primos n = factores n 2
+factoresPrimos :: Int -> [Int]
+factoresPrimos n = factorizar n 2
 
-factores :: Int -> Int -> [Int]
-factores 1 d = []
-factores n d | mod n d == 0 = d : factores (div n d) d
-           | otherwise = factores n (d + 1)
+factorizar :: Int -> Int -> [Int]
+factorizar 1 d = []
+factorizar n d | mod n d == 0 = d : factorizar (div n d) d
+               | otherwise = factorizar n (d + 1)
