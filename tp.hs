@@ -1,18 +1,22 @@
--- Ejercicio 1: Cuenta dentro de la sumatoria
+sumatoria :: Num a => Int -> Int -> (Int -> a) -> a
+sumatoria i n f | i == n = f n
+sumatoria i n f = f i + sumatoria (succ i) n f
+
+-- Ejercicio 1. Función principal: "puntoUno".
 
 primero :: Int -> Int 
 primero i = (2 * i - 1) ^ 2
 
--- Ejercicio 2: Cuenta dentro de la sumatoria
+puntoUno :: Int -> Int
+puntoUno n = sumatoria 1 n primero
+
+-- Ejercicio 2. Función principal: "puntoDos".
 
 segundo :: Int -> Int
 segundo i = (-1) ^ i * 2 ^ i
 
--- Sumatoria para resolver Ejercicios 1 y 2 
-
-sumatoria :: Int -> (Int -> Int) -> Int
-sumatoria 0 funcion = 0
-sumatoria n funcion = funcion n + sumatoria (n - 1) funcion
+puntoDos :: Int -> Int
+puntoDos n = sumatoria 1 n segundo
 
 -- Ejercicio 3: Cantidad de elementos de A que se encuentran en B. Función principal: "cantidad".
 
